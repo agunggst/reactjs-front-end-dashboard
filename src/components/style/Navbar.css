@@ -1,0 +1,33 @@
+.navbar{
+  width: calc(100vw - 400px);
+  position: fixed;
+  padding: 12px;
+  background: rgba(244, 247, 254, 0.2);
+  backdrop-filter: blur(20px);
+  border-radius: 16px;
+  top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.navbar .title{
+  color: var(--text-dark-blue-1);
+  font-size: 34px;
+  font-weight: 700;
+}
+.navbar .breadcumb-item{
+  color: var(--text-black-2);
+  font-size: 14px;
+  font-weight: 400;
+  cursor: pointer;
+}
+.navbar .profile-nav{
+  background-color: var(--grey-base);
+  box-shadow: 14px 17px 40px 4px rgba(112, 144, 176, 0.18);
+  height: 40px;
+  border-radius: 30px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 10px 20px;
+}

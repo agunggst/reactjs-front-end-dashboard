@@ -7,9 +7,11 @@ const AdminLayout = () => {
   return (
     <div className="default-layout">
       <Sidebar/>
-      <Navbar/>
       <div className="page-container">
-        <Outlet/>
+        <Navbar/>
+        <div className="page">
+          <Outlet/>
+        </div>
       </div>
     </div>
   )
