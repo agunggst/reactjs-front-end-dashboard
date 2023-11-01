@@ -1,11 +1,20 @@
+import Login from "../pages/Login";
 import UserManage from "../pages/UserManage";
 
-export const routes = [
+export const adminRoutes = [
   {
-    path: '/admin/user-manage',
+    path: 'user-manage',
     name: 'User Manage',
-    layout: 'default',
     isGuarded: true,
-    component: UserManage
-  }
+    component: <UserManage />
+  },
+]
+
+export const blankRoutes = [
+  {
+    path: 'login',
+    name: 'Login',
+    isGuarded: false,
+    component: <Login />
+  },
 ]
