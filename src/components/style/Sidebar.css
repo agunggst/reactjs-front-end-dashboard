@@ -3,6 +3,7 @@
   width: 300px;
   height: calc(100vh - 48px);
   padding: 24px 12px;
+  position: fixed;
 }
 .sidebar .company-logo-container{
   margin: 32px 0;
