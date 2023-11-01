@@ -12,39 +12,7 @@ const UserManage = () => {
       avatar: <Avatar src="https://pbs.twimg.com/media/FjU2lkcWYAgNG6d.jpg"/>,
       email: 'asd@asd.asd',
       address: 'Lorem ipum dolor sit amet, consectetur adipiscing el'
-    },
-    {
-      id: 1,
-      username: 'admin1',
-      fullname: 'admin 123 123',
-      avatar: <Avatar src="https://pbs.twimg.com/media/FjU2lkcWYAgNG6d.jpg"/>,
-      email: 'asd@asd.asd',
-      address: 'Lorem ipum dolor sit amet, consectetur adipiscing el'
-    },
-    {
-      id: 1,
-      username: 'admin1',
-      fullname: 'admin 123 123',
-      avatar: <Avatar src="https://pbs.twimg.com/media/FjU2lkcWYAgNG6d.jpg"/>,
-      email: 'asd@asd.asd',
-      address: 'Lorem ipum dolor sit amet, consectetur adipiscing el'
-    },
-    {
-      id: 1,
-      username: 'admin1',
-      fullname: 'admin 123 123',
-      avatar: <Avatar src="https://pbs.twimg.com/media/FjU2lkcWYAgNG6d.jpg"/>,
-      email: 'asd@asd.asd',
-      address: 'Lorem ipum dolor sit amet, consectetur adipiscing el'
-    },
-    {
-      id: 1,
-      username: 'admin1',
-      fullname: 'admin 123 123',
-      avatar: <Avatar src="https://pbs.twimg.com/media/FjU2lkcWYAgNG6d.jpg"/>,
-      email: 'asd@asd.asd',
-      address: 'Lorem ipum dolor sit amet, consectetur adipiscing el'
-    },
+    }
   ]
   return (
     <div className="user-manage">
