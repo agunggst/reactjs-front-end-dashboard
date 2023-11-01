@@ -1,5 +1,6 @@
 import Login from "../pages/Login";
 import UserManage from "../pages/UserManage";
+import ProductManage from "../pages/ProductManage";
 
 export const adminRoutes = [
   {
@@ -7,6 +8,12 @@ export const adminRoutes = [
     name: 'User Manage',
     isGuarded: true,
     component: <UserManage />
+  },
+  {
+    path: 'product-manage',
+    name: 'Product Manage',
+    isGuarded: true,
+    component: <ProductManage />
   },
 ]
 
