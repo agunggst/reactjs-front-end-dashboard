@@ -1,0 +1,17 @@
+.edit-user{
+  padding: 16px;
+  background-color: var(--base-grey);
+  box-shadow: 14px 17px 40px 4px rgba(112, 144, 176, 0.08);
+  border-radius: 20px;
+}
+.field{
+  display: flex;
+  flex-direction: column;
+}
+.edit-input{
+  margin-bottom: 32px !important;
+}
+.button-container{
+  display: flex;
+  justify-content: flex-end;
+}

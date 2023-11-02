@@ -1,8 +1,10 @@
+import { useNavigate } from "react-router"
 import CustomTable from "../components/CustomTable"
 import "./style/UserManage.css"
 import { Avatar, TextField } from "@mui/material"
 
 const UserManage = () => {
+  const navigate = useNavigate()
   const tableHeads = ['User Id', 'Username', 'Full Name', 'Avatar', 'Email', 'Address']
   const users = [
     {
@@ -14,13 +16,16 @@ const UserManage = () => {
       address: 'Lorem ipum dolor sit amet, consectetur adipiscing el'
     }
   ]
+  const handleClickTableRow = (path) => {
+    navigate(path)
+  }
   return (
     <div className="user-manage">
       <div className="utilities">
         <TextField id="standard-basic" label="Search By Id" variant="standard" sx={{ width: '300px' }} />
       </div>
       <div className="table">
-        <CustomTable data={users} heads={tableHeads}/>
+        <CustomTable data={users} heads={tableHeads} onClickRow={handleClickTableRow}/>
       </div>
     </div>
   )

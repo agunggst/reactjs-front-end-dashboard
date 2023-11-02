@@ -8,7 +8,7 @@ import Paper from '@mui/material/Paper';
 
 import "./style/CustomTable.css"
 
-const CustomTable = ({ data, heads }) => {
+const CustomTable = ({ data, heads, onClickRow }) => {
   return (
     <div className='custom-table'>
       <TableContainer component={Paper} style={{ boxShadow: 'none' }}>
@@ -25,7 +25,7 @@ const CustomTable = ({ data, heads }) => {
           <TableBody>
             {data.map((item, index) => {
               return (
-                <TableRow key={index} sx={{ '&:last-child td, &:last-child th': { border: 0 }, cursor: 'pointer' }}>
+                <TableRow key={index} onClick={() => onClickRow(`/admin/user-manage/${item.id}`)} sx={{ '&:last-child td, &:last-child th': { border: 0 }, cursor: 'pointer' }}>
                   {Object.entries(item).map(([key, value]) => {
                     return (
                       <TableCell align={`${key === 'id' ? 'center' : 'left'}`}>{value}</TableCell>
