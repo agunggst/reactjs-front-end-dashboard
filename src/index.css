@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap");
 *{
   margin: 0px;
-  font-family: "DM Sans", sans-serif;
+  font-family: "DM Sans", sans-serif !important;
   text-decoration: none;
   color: inherit;
 }
@@ -23,8 +23,11 @@
   flex-direction: row;
 }
 .default-layout .page-container{
-  margin-left: 16px;
+  margin-left: 332px;
 }
 .page{
   padding-top: 116px;
+  margin-left: 20px;
+  margin-right: 20px;
+  width: calc(100vw - 390px);
 }

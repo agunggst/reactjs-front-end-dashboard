@@ -33,13 +33,13 @@ const Sidebar = () => {
       <div className="navigation-container">
         {navigationList.map((nav, index) => {
           return (
-            <Link className={`navigation ${pathname === nav.path ? 'active-nav' : ''}`} key={index} to={nav.path} onClick={() => changePathname(nav.path)}>
+            <Link className={`navigation ${pathname.includes(nav.path) ? 'active-nav' : ''}`} key={index} to={nav.path} onClick={() => changePathname(nav.path)}>
               <div className="left">
-                <div className={`icon ${pathname === nav.path ? 'active-icon' : ''}`}>{nav.icon}</div>
+                <div className={`icon ${pathname.includes(nav.path) ? 'active-icon' : ''}`}>{nav.icon}</div>
                 <div className="name">{nav.name}</div>
               </div>
               <div className="right">
-                <div className={`${pathname === nav.path ? 'mark' : ''}`}></div>
+                <div className={`${pathname.includes(nav.path) ? 'mark' : ''}`}></div>
               </div>
             </Link>
           )

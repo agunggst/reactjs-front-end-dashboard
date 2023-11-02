@@ -32,7 +32,7 @@ const Navbar = () => {
       </div>
       <div className="right">
         <div className="profile-nav">
-          <Button variant="text" style={{marginRight: '12px'}}>Log out</Button>
+          <Button variant="text" style={{marginRight: '12px', marginTop: '4px'}}>Log out</Button>
           <Avatar sx={{ bgcolor: '#11047a' }}>A</Avatar>
         </div>
       </div>
