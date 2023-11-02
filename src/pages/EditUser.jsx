@@ -1,5 +1,4 @@
 import { Button, TextField } from "@mui/material"
-import { TextareaAutosize } from '@mui/base/TextareaAutosize'
 import "./style/EditUser.css"
 
 const EditUser = () => {
