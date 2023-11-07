@@ -43,3 +43,8 @@
 .login-button{
   margin-top: 32px !important;
 }
+.warning-sign{
+  color: red;
+  text-align: center;
+  margin-bottom: 8px;
+}
