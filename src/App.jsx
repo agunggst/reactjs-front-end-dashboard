@@ -34,7 +34,7 @@ function App() {
     if (accessToken) {
       getUserInfo()
     }
-  }, [accessToken])
+  }, [])
   return (
     <Router>
       <div className="App">
