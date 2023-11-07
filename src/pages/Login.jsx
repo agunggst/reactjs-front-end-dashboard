@@ -1,14 +1,25 @@
 import { Button, Checkbox, TextField } from '@mui/material'
 import PokopediaLogo from '../assets/pokopedia-Icon.png'
 import "./style/Login.css"
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import axios from 'axios'
+import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [isShowPassword, setIsShowPassword] = useState(false)
   const [error, setError] = useState('')
+
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    const accessToken = localStorage.getItem('accessToken')
+    if (accessToken) navigate('/admin/user-manage')
+  }, [navigate])
+
   const login = async (e) => {
     e.preventDefault()
     if (!username || !password) {
@@ -25,7 +36,21 @@ const Login = () => {
         }
       }
       const { data } = await axios(config)
-      console.log(data);
+      const accessToken = data.data.access_token
+      const userInfo = data.data.userInfo
+      console.log(userInfo);
+      if (!userInfo.isAdmin) {
+        setError('User not an Admin.')
+        return
+      }
+      dispatch({
+        type: 'LOGIN',
+        payload: {
+          accessToken,
+          userInfo
+        }
+      })
+      navigate('/admin/user-manage')
     } catch (error) {
       console.log(error.response.data)
       setError(error.response.data.error)
@@ -46,7 +71,7 @@ const Login = () => {
           <div className="password-show">
             <Checkbox checked={isShowPassword} onClick={() => setIsShowPassword(!isShowPassword)} /> <span>Show Password</span>
           </div>
-          <Button variant="contained" className='login-button' onClick={(e) => login(e)}>Log In</Button>
+          <Button variant="contained" className='login-button' onClick={(e) => login(e)} type='submit'>Log In</Button>
         </form>
       </div>
     </div>

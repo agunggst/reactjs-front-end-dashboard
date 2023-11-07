@@ -1,9 +1,12 @@
 import { useNavigate } from "react-router-dom"
 import "./style/Navbar.css"
 import { Button, Breadcrumbs, Avatar } from "@mui/material"
+import { useDispatch } from "react-redux"
 
 const Navbar = () => {
   const navigate = useNavigate()
+  const dispatch = useDispatch()
+
   const breadcrumbs = [
     {
       text: 'Admin',
@@ -14,6 +17,13 @@ const Navbar = () => {
       path: '/admin/user-manage'
     }
   ]
+
+  const logout = () => {
+    dispatch({
+      type: 'LOGOUT'
+    })
+    navigate('/login')
+  }
 
   const handleClickBreadcrumb = (path) => {
     if (path) navigate(path)
@@ -32,7 +42,7 @@ const Navbar = () => {
       </div>
       <div className="right">
         <div className="profile-nav">
-          <Button variant="text" style={{marginRight: '12px', marginTop: '4px'}}>Log out</Button>
+          <Button variant="text" style={{marginRight: '12px', marginTop: '4px'}} onClick={logout}>Log out</Button>
           <Avatar sx={{ bgcolor: '#11047a' }}>A</Avatar>
         </div>
       </div>

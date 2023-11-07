@@ -28,7 +28,7 @@ const CustomTable = ({ data, heads, onClickRow }) => {
                 <TableRow key={index} onClick={() => onClickRow(`/admin/user-manage/${item.id}`)} sx={{ '&:last-child td, &:last-child th': { border: 0 }, cursor: 'pointer' }}>
                   {Object.entries(item).map(([key, value]) => {
                     return (
-                      <TableCell align={`${key === 'id' ? 'center' : 'left'}`}>{value}</TableCell>
+                      <TableCell key={`${index} ${key}`} align={`${key === 'id' ? 'center' : 'left'}`}>{value}</TableCell>
                     )
                   })}
                 </TableRow>
