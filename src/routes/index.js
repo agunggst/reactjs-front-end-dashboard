@@ -2,6 +2,7 @@ import Login from "../pages/Login";
 import UserManage from "../pages/UserManage";
 import ProductManage from "../pages/ProductManage";
 import EditUser from "../pages/EditUser";
+import NotFound from "../pages/NotFound";
 
 export const adminRoutes = [
   {
@@ -30,5 +31,11 @@ export const blankRoutes = [
     name: 'Login',
     isGuarded: false,
     component: <Login />
+  },
+  {
+    path: '*',
+    name: 'Not Found',
+    isGuarded: false,
+    component: <NotFound />
   },
 ]
