@@ -1,21 +1,16 @@
 const defaultState = {
   userInfo: {},
-  isLoggedIn: false
+  accessToken: ''
 }
 
 const reducer = (state = defaultState, action) => {
   switch (action.type) {
-    case 'INIT_USER_INFO':
-      const userInfo = JSON.parse(localStorage.getItem('userInfo'))
-      return {...state, userInfo: userInfo, isLoggedIn: true}
     case 'LOGIN':
-      localStorage.setItem('userInfo', JSON.stringify(action.payload.userInfo))
-      localStorage.setItem('isLoggedIn', true)
-      return {...state, userInfo: action.payload.userInfo, isLoggedIn: true}
+      localStorage.setItem('accessToken', action.payload.accessToken)
+      return {...state, userInfo: action.payload.userInfo, accessToken: action.payload.accessToken}
     case 'LOGOUT':
-      localStorage.removeItem('userInfo')
-      localStorage.removeItem('isLoggedIn')
-      return {...state, userInfo: {}, isLoggedIn: false}
+      localStorage.removeItem('accessToken')
+      return {...state, userInfo: {}, accessToken: ''}
     default:
       return state
   }
