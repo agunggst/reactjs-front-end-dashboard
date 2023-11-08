@@ -8,6 +8,7 @@ const Navbar = () => {
   const dispatch = useDispatch()
   const pageTitle = useSelector(state => state.layoutReducer.pageTitle)
   const breadcrumbs = useSelector(state => state.layoutReducer.breadcrumbs)
+  const avatar = useSelector(state => state.userReducer.userInfo.avatar)
 
   const logout = () => {
     dispatch({
@@ -34,7 +35,8 @@ const Navbar = () => {
       <div className="right">
         <div className="profile-nav">
           <Button variant="text" style={{marginRight: '12px', marginTop: '4px'}} onClick={logout}>Log out</Button>
-          <Avatar sx={{ bgcolor: '#11047a' }}>A</Avatar>
+          {!avatar && <Avatar sx={{ bgcolor: '#11047a' }}>A</Avatar>}
+          {avatar && <Avatar src={avatar} />}
         </div>
       </div>
     </div>
