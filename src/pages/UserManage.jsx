@@ -5,6 +5,7 @@ import { Avatar, TextField } from "@mui/material"
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect, useState } from "react"
 import axios from "axios"
+import useDebounce from "../hooks/useDebounce"
 
 const UserManage = () => {
   const navigate = useNavigate()
@@ -12,16 +13,9 @@ const UserManage = () => {
   const accessToken = useSelector(state => state.userReducer.accessToken)
   const tableHeads = ['User Id', 'Username', 'Full Name', 'Avatar', 'Email', 'Address']
   const [users, setUsers] = useState([])
-  // const users = [
-  //   {
-  //     id: 1,
-  //     username: 'admin1',
-  //     fullname: 'admin 123 123',
-  //     avatar: <Avatar src="https://pbs.twimg.com/media/FjU2lkcWYAgNG6d.jpg"/>,
-  //     email: 'asd@asd.asd',
-  //     address: 'Lorem ipum dolor sit amet, consectetur adipiscing el'
-  //   }
-  // ]
+  const [inputSearch, setInputSearch] = useState('')
+  const search = useDebounce(inputSearch)
+
   const setNavbarData = () => {
     dispatch({
       type: 'SET_PAGE_TITLE',
@@ -54,7 +48,7 @@ const UserManage = () => {
     }
     try {
       const config = {
-        url: 'http://localhost:3000/users',
+        url: `http://localhost:3000/users?username=${search || ''}`,
         method: 'GET',
         headers: {
           access_token: accessToken
@@ -76,16 +70,21 @@ const UserManage = () => {
       console.log(error);
     }
   }
+
   useEffect(() => {
     setNavbarData()
   }, [])
   useEffect(() => {
     getAllUsers()
   }, [accessToken])
+  useEffect(() => {
+    getAllUsers()
+  }, [search])
+  
   return (
     <div className="user-manage">
       <div className="utilities">
-        <TextField id="standard-basic" label="Search By Id" variant="standard" sx={{ width: '300px' }} />
+        <TextField id="standard-basic" label="Search" variant="standard" sx={{ width: '300px' }} value={inputSearch} onChange={(e) => setInputSearch(e.target.value)}/>
       </div>
       <div className="table">
         <CustomTable data={users} heads={tableHeads} onClickRow={handleClickTableRow}/>
