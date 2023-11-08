@@ -1,22 +1,13 @@
 import { useNavigate } from "react-router-dom"
 import "./style/Navbar.css"
 import { Button, Breadcrumbs, Avatar } from "@mui/material"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 
 const Navbar = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
-
-  const breadcrumbs = [
-    {
-      text: 'Admin',
-      path: false
-    },
-    {
-      text: 'User Management',
-      path: '/admin/user-manage'
-    }
-  ]
+  const pageTitle = useSelector(state => state.layoutReducer.pageTitle)
+  const breadcrumbs = useSelector(state => state.layoutReducer.breadcrumbs)
 
   const logout = () => {
     dispatch({
@@ -38,7 +29,7 @@ const Navbar = () => {
             )
           })}
         </Breadcrumbs>
-        <div className="title">User Management</div>
+        <div className="title">{pageTitle}</div>
       </div>
       <div className="right">
         <div className="profile-nav">

@@ -1,5 +1,5 @@
 const defaultState = {
-  pageTitle: '',
+  pageTitle: 'User Management',
   breadcrumbs: []
 }
 

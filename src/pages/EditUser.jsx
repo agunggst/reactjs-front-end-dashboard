@@ -1,7 +1,10 @@
 import { Button, TextField } from "@mui/material"
 import "./style/EditUser.css"
+import { useDispatch } from "react-redux"
+import { useEffect } from "react"
 
 const EditUser = () => {
+  const dispatch = useDispatch()
   const user = {
     id: 1,
     username: 'admin1',
@@ -10,6 +13,36 @@ const EditUser = () => {
     email: 'asd@asd.asd',
     address: 'Lorem ipum dolor sit amet, consectetur adipiscing el'
   }
+  const setNavbarData = () => {
+    dispatch({
+      type: 'SET_PAGE_TITLE',
+      payload: {
+        pageTitle: 'User Management'
+      }
+    })
+    dispatch({
+      type: 'SET_BREADCRUMBS',
+      payload: {
+        breadcrumbs: [
+          {
+            text: 'Admin',
+            path: false
+          },
+          {
+            text: 'User Management',
+            path: '/admin/user-manage'
+          },
+          {
+            text: `${user.username}`,
+            path: `/admin/user-manage/${user.id}`
+          }
+        ]
+      }
+    })
+  }
+  useEffect(() => {
+    setNavbarData()
+  }, [])
   return (
     <div className="edit-user">
       <div className="field">
