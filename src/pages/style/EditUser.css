@@ -31,6 +31,11 @@
   border-radius: 50%;
   padding-right: 32px;
   margin-bottom: 32px;
+  transition: .2s ease-in-out;
+  cursor: pointer;
+}
+.user-profile-picture:hover{
+  opacity: .7;
 }
 .edit-user .user-id-info .content{
   font-weight: 500;
