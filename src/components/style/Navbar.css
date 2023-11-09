@@ -17,7 +17,7 @@
   font-weight: 700;
 }
 .navbar .breadcumb-item{
-  color: var(--text-black-2);
+  color: var(--text-grey);
   font-size: 14px;
   font-weight: 400;
   cursor: pointer;

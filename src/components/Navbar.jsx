@@ -26,7 +26,7 @@ const Navbar = () => {
         <Breadcrumbs separator="/" aria-label="breadcrumb">
           {breadcrumbs.map((breadcrumb, index) => {
             return (
-              <div className='breadcumb-item' key={index} onClick={() => handleClickBreadcrumb(breadcrumb.path)}>{breadcrumb.text}</div>
+              <div className='breadcumb-item' style={index === breadcrumbs.length-1 ? {fontWeight: 600} : {}} key={index} onClick={() => handleClickBreadcrumb(breadcrumb.path)}>{breadcrumb.text}</div>
             )
           })}
         </Breadcrumbs>
