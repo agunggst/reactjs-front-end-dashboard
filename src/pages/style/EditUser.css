@@ -29,7 +29,7 @@
   height: 300px;
   object-fit: cover;
   border-radius: 50%;
-  padding-right: 32px;
+  margin-right: 32px;
   margin-bottom: 32px;
   transition: .2s ease-in-out;
   cursor: pointer;

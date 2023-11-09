@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router"
 import CustomTable from "../components/CustomTable"
 import "./style/UserManage.css"
 import { Avatar, Button, TextField } from "@mui/material"
@@ -9,7 +8,6 @@ import useDebounce from "../hooks/useDebounce"
 import { Link } from "react-router-dom"
 
 const UserManage = () => {
-  const navigate = useNavigate()
   const dispatch = useDispatch()
   const accessToken = useSelector(state => state.userReducer.accessToken)
   const tableHeads = ['User Id', 'Username', 'Full Name', 'Avatar', 'Email', 'Address']
@@ -39,9 +37,6 @@ const UserManage = () => {
         ]
       }
     })
-  }
-  const handleClickTableRow = (path) => {
-    navigate(path)
   }
   const getAllUsers = async () => {
     if (!accessToken) {
@@ -91,7 +86,7 @@ const UserManage = () => {
         </Link>
       </div>
       <div className="table">
-        <CustomTable data={users} heads={tableHeads} onClickRow={handleClickTableRow}/>
+        <CustomTable data={users} heads={tableHeads} onClickRowPath="/admin/user-manage"/>
       </div>
     </div>
   )

@@ -7,10 +7,13 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
 import "./style/CustomTable.css"
+import { useNavigate } from 'react-router-dom';
 
-const CustomTable = ({ data, heads, onClickRow }) => {
+const CustomTable = ({ data, heads, onClickRowPath }) => {
+  const navigate = useNavigate()
   return (
     <div className='custom-table'>
+
       <TableContainer component={Paper} style={{ boxShadow: 'none' }}>
         <Table sx={{ minWidth: 650, border: 'none', backgroundColor: '#F4F7FE' }} aria-label="simple table">
           <TableHead>
@@ -25,7 +28,7 @@ const CustomTable = ({ data, heads, onClickRow }) => {
           <TableBody>
             {data.map((item, index) => {
               return (
-                <TableRow key={index} onClick={() => onClickRow(`/admin/user-manage/${item.id}`)} sx={{ '&:last-child td, &:last-child th': { border: 0 }, cursor: 'pointer' }}>
+                <TableRow key={index} onClick={() => navigate(`${onClickRowPath}/${item.id}`)} sx={{ '&:last-child td, &:last-child th': { border: 0 }, cursor: 'pointer' }}>
                   {Object.entries(item).map(([key, value]) => {
                     return (
                       <TableCell key={`${index} ${key}`} align={`${key === 'id' ? 'center' : 'left'}`}>{value}</TableCell>
