@@ -131,10 +131,10 @@ const EditUser = () => {
       </div>
       <div className="right">
         <div className="field">
-          <TextField id="outlined-basic" label="Username" variant="outlined" value={username} onChange={(e) => setUsername(e.target.value)} className="edit-input"/>
-          <TextField id="outlined-basic" label="Full Name" variant="outlined" value={fullname} onChange={(e) => setFullname(e.target.value)} className="edit-input"/>
-          <TextField id="outlined-basic" label="Email" variant="outlined" value={email} onChange={(e) => setEmail(e.target.value)} className="edit-input"/>
-          <TextField id="outlined-basic" label="Address" variant="outlined" value={address} onChange={(e) => setAddress(e.target.value)} className="edit-input"/>
+          <TextField label="Username" variant="outlined" value={username} onChange={(e) => setUsername(e.target.value)} className="edit-input"/>
+          <TextField label="Full Name" variant="outlined" value={fullname} onChange={(e) => setFullname(e.target.value)} className="edit-input"/>
+          <TextField label="Email" variant="outlined" value={email} onChange={(e) => setEmail(e.target.value)} className="edit-input"/>
+          <TextField label="Address" variant="outlined" value={address} onChange={(e) => setAddress(e.target.value)} className="edit-input"/>
         </div>
         <div className="button-container">
           <Button variant="contained" onClick={saveConfirmation}>Save</Button>
