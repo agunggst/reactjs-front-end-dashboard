@@ -25,8 +25,7 @@ const EditUser = () => {
     email: '',
     address: ''
   })
-
-  const client = filestack.init('AkKvhTfQmyUALtH3JAZgvz')
+  const client = filestack.init(process.env.REACT_APP_FILESTACK_API_KEY)
   const filestackConfig = {
     accept: ["image/*"],
     onUploadDone: file => {
