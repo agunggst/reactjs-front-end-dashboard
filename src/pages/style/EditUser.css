@@ -3,6 +3,8 @@
   background-color: var(--base-grey);
   box-shadow: 14px 17px 40px 4px rgba(112, 144, 176, 0.08);
   border-radius: 20px;
+  display: flex;
+  flex-direction: row;
 }
 .field{
   display: flex;
@@ -14,4 +16,23 @@
 .button-container{
   display: flex;
   justify-content: flex-end;
+}
+.edit-user .left{
+  border-right: 1px solid rgba(224, 224, 224, 1);
+}
+.edit-user .right{
+  padding-left: 32px;
+  width: 100%;
+}
+.user-profile-picture{
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 50%;
+  padding-right: 32px;
+  margin-bottom: 32px;
+}
+.user-id-info .content{
+  font-weight: 500;
+  color: var(--text-grey);
 }
