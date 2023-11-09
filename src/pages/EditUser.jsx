@@ -6,6 +6,7 @@ import axios from "axios"
 import { useParams } from "react-router-dom"
 import Swal from 'sweetalert2'
 import Toast from "../helpers/toast"
+import * as filestack from 'filestack-js';
 
 const EditUser = () => {
   const dispatch = useDispatch()
@@ -15,6 +16,7 @@ const EditUser = () => {
   const [fullname, setFullname] = useState('')
   const [email, setEmail] = useState('')
   const [address, setAddress] = useState('')
+  const [avatar, setAvatar] = useState('')
   const [user, setUser] = useState({
     id: 0,
     username: '',
@@ -23,6 +25,18 @@ const EditUser = () => {
     email: '',
     address: ''
   })
+
+  const client = filestack.init('AkKvhTfQmyUALtH3JAZgvz')
+  const filestackConfig = {
+    accept: ["image/*"],
+    onUploadDone: file => {
+      setAvatar(file.filesUploaded[0].url)
+    }
+  }
+  const openUploadPicker = () => {
+    client.picker(filestackConfig).open()
+  }
+
   const getUser = async () => {
     if (!accessToken) {
       return
@@ -48,6 +62,7 @@ const EditUser = () => {
       setFullname(data.data.fullname)
       setEmail(data.data.email)
       setAddress(data.data.address)
+      setAvatar(data.data.avatar)
       setNavbarData(data.data)
     } catch (error) {
       console.log(error)
@@ -77,7 +92,7 @@ const EditUser = () => {
         data: {
           username,
           fullname,
-          avatar: user.avatar,
+          avatar,
           email,
           address
         }
@@ -118,13 +133,15 @@ const EditUser = () => {
       }
     })
   }
+
   useEffect(() => {
     getUser()
   }, [accessToken])
+
   return (
     <div className="edit-user">
       <div className="left">
-        <img src={user.avatar} alt="pokopedia" className="user-profile-picture"/>
+        <img src={avatar} alt="pokopedia" className="user-profile-picture" onClick={openUploadPicker}/>
         <div className="user-id-info">
           <div className="content">User ID: {user.id}</div>
         </div>
