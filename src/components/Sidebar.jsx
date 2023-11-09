@@ -4,6 +4,8 @@ import "./style/Sidebar.css"
 
 import GroupIcon from '@mui/icons-material/Group'
 import Inventory2Icon from '@mui/icons-material/Inventory2'
+import CategoryIcon from '@mui/icons-material/Category'
+import ReceiptIcon from '@mui/icons-material/Receipt'
 import { useState } from 'react';
 
 const Sidebar = () => {
@@ -11,14 +13,24 @@ const Sidebar = () => {
 
   const navigationList = [
     {
-      name: 'User Management',
+      name: 'Users',
       icon: <GroupIcon/>,
       path: '/admin/user-manage'
     },
     {
-      name: 'Product Management',
+      name: 'Products',
       icon: <Inventory2Icon/>,
       path: '/admin/product-manage'
+    },
+    {
+      name: 'Categories',
+      icon: <CategoryIcon/>,
+      path: '/admin/category-manage'
+    },
+    {
+      name: 'Invoices',
+      icon: <ReceiptIcon/>,
+      path: '/admin/invoice-manage'
     }
   ]
 

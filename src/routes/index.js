@@ -3,6 +3,7 @@ import UserManage from "../pages/UserManage";
 import ProductManage from "../pages/ProductManage";
 import EditUser from "../pages/EditUser";
 import NotFound from "../pages/NotFound";
+import CreateUser from "../pages/CreateUser";
 
 export const adminRoutes = [
   {
@@ -10,6 +11,12 @@ export const adminRoutes = [
     name: 'User Manage',
     isGuarded: true,
     component: <UserManage />
+  },
+  {
+    path: 'user-manage/create-user',
+    name: 'User Manage - Create',
+    isGuarded: true,
+    component: <CreateUser />
   },
   {
     path: 'user-manage/:id',

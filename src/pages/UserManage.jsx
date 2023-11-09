@@ -1,11 +1,12 @@
 import { useNavigate } from "react-router"
 import CustomTable from "../components/CustomTable"
 import "./style/UserManage.css"
-import { Avatar, TextField } from "@mui/material"
+import { Avatar, Button, TextField } from "@mui/material"
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect, useState } from "react"
 import axios from "axios"
 import useDebounce from "../hooks/useDebounce"
+import { Link } from "react-router-dom"
 
 const UserManage = () => {
   const navigate = useNavigate()
@@ -85,6 +86,9 @@ const UserManage = () => {
     <div className="user-manage">
       <div className="utilities">
         <TextField id="standard-basic" label="Search" variant="standard" sx={{ width: '300px' }} value={inputSearch} onChange={(e) => setInputSearch(e.target.value)}/>
+        <Link to='/admin/user-manage/create-user'>
+          <Button variant="contained">Create</Button>
+        </Link>
       </div>
       <div className="table">
         <CustomTable data={users} heads={tableHeads} onClickRow={handleClickTableRow}/>

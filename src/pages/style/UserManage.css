@@ -1,3 +1,6 @@
 .user-manage .utilities{
   margin-bottom: 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
