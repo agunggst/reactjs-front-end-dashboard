@@ -6,6 +6,7 @@ import NotFound from "../pages/NotFound";
 import CreateUser from "../pages/CreateUser";
 import CategoryManage from "../pages/CategoryManage";
 import InvoiceManage from "../pages/InvoiceManage";
+import EditCategory from "../pages/EditCategory";
 
 export const adminRoutes = [
   {
@@ -37,6 +38,12 @@ export const adminRoutes = [
     name: 'Category Manage',
     isGuarded: true,
     component: <CategoryManage />
+  },
+  {
+    path: 'category-manage/:id',
+    name: 'Category Manage - Edit Category',
+    isGuarded: true,
+    component: <EditCategory />
   },
   {
     path: 'invoice-manage',

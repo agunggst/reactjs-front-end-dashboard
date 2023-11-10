@@ -1,0 +1,25 @@
+.edit-category{
+  padding: 16px;
+  background-color: var(--base-grey);
+  box-shadow: 14px 17px 40px 4px rgba(112, 144, 176, 0.08);
+  border-radius: 20px;
+  max-width: 800px;
+}
+.edit-category .edit-input{
+  width: 350px;
+  margin-bottom: 32px;
+}
+.edit-category .color-picker{
+  max-width: 800px;
+  margin-bottom: 32px;
+}
+.edit-category .color-picker .label{
+  margin-bottom: 16px;
+  margin-left: 8px;
+  color: var(--text-grey);
+  font-weight: 600;
+}
+.edit-category .button-container{
+  display: flex;
+  justify-content: flex-end;
+}
