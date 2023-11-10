@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import useDebounce from "../hooks/useDebounce"
 import axios from "axios"
 import moment from "moment"
 import CustomTable from "../components/CustomTable"
-import { Avatar } from "@mui/material"
+import { Avatar, Button } from "@mui/material"
+import { Link } from "react-router-dom"
+import "./style/CategoryManage.css"
 
 const CategoryManage = () => {
   const dispatch = useDispatch()
@@ -71,6 +72,11 @@ const CategoryManage = () => {
 
   return (
     <div className="category-manage">
+      <div className="utilities">
+        <Link to='/admin/category-manage/create-category'>
+          <Button variant="contained">Create</Button>
+        </Link>
+      </div>
       <div className="table">
         <CustomTable data={categories} heads={tableHeads} onClickRowPath="/admin/category-manage"/>
       </div>
