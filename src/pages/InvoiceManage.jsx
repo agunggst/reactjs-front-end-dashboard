@@ -75,7 +75,7 @@ const InvoiceManage = () => {
 
   return (
     <div className="invoice-manage">
-      <div className="utilities">
+      <div className="utilities" style={{ marginBottom: '28px' }}>
         <TextField id="standard-basic" label="Search" variant="standard" sx={{ width: '300px' }} value={inputSearch} onChange={(e) => setInputSearch(e.target.value)}/>
       </div>
       <div className="table">
