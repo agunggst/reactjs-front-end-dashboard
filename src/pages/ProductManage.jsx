@@ -12,7 +12,7 @@ import rupiahFormatter from "../helpers/rupiahFormater"
 const ProductManage = () => {
   const dispatch = useDispatch()
   const accessToken = useSelector(state => state.userReducer.accessToken)
-  const tableHeads = ['Product Id', 'Name', 'Stock', 'Price', 'Category(es)', 'Created Date']
+  const tableHeads = ['Product Id', 'Name', 'Stock', 'Price', 'Category(s)', 'Created Date']
   const [products, setProducts] = useState([])
   const [inputSearch, setInputSearch] = useState('')
   const search = useDebounce(inputSearch)
