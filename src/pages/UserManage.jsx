@@ -1,6 +1,6 @@
 import CustomTable from "../components/CustomTable"
 import "./style/UserManage.css"
-import { Avatar, Button, TextField } from "@mui/material"
+import { Avatar, Button, TextField, Pagination } from "@mui/material"
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect, useState } from "react"
 import axios from "axios"
@@ -9,11 +9,13 @@ import { Link } from "react-router-dom"
 
 const UserManage = () => {
   const dispatch = useDispatch()
+  const [page, setPage] = useState(1)
   const accessToken = useSelector(state => state.userReducer.accessToken)
   const tableHeads = ['User Id', 'Username', 'Full Name', 'Avatar', 'Email', 'Address']
   const [users, setUsers] = useState([])
   const [inputSearch, setInputSearch] = useState('')
   const search = useDebounce(inputSearch)
+  const perPage = 5
 
   const setNavbarData = () => {
     dispatch({
@@ -62,6 +64,7 @@ const UserManage = () => {
         }
       })
       setUsers(users)
+      setPage(1)
     } catch (error) {
       console.log(error);
     }
@@ -86,7 +89,10 @@ const UserManage = () => {
         </Link>
       </div>
       <div className="table">
-        <CustomTable data={users} heads={tableHeads} onClickRowPath="/admin/user-manage"/>
+        <CustomTable data={users.slice(0 + perPage * (page - 1), perPage + perPage * (page - 1))} heads={tableHeads} onClickRowPath="/admin/user-manage"/>
+        <div className="pagination">
+          <Pagination count={Math.ceil(users.length/perPage)} onChange={((e, value) => setPage(value))} page={page} variant="outlined" color="primary" />
+        </div>
       </div>
     </div>
   )
