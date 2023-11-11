@@ -5,7 +5,8 @@ import "./style/Sidebar.css"
 import GroupIcon from '@mui/icons-material/Group'
 import Inventory2Icon from '@mui/icons-material/Inventory2'
 import CategoryIcon from '@mui/icons-material/Category'
-import ReceiptIcon from '@mui/icons-material/Receipt'
+import ReceiptLongIcon from '@mui/icons-material/Receipt'
+import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
 import { useState } from 'react';
 
 const Sidebar = () => {
@@ -28,8 +29,13 @@ const Sidebar = () => {
       path: '/admin/category-manage'
     },
     {
+      name: 'Transactions',
+      icon: <ShoppingCartCheckoutIcon/>,
+      path: '/admin/transaction-manage'
+    },
+    {
       name: 'Invoices',
-      icon: <ReceiptIcon/>,
+      icon: <ReceiptLongIcon/>,
       path: '/admin/invoice-manage'
     }
   ]
