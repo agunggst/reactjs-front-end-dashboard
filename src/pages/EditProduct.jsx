@@ -7,10 +7,13 @@ import * as filestack from 'filestack-js'
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline'
 import Toast from "../helpers/toast"
 import Swal from "sweetalert2"
+import { useParams } from "react-router-dom"
 
-const CreateEditProduct = () => {
+const EditProduct = () => {
   const dispatch = useDispatch()
   const accessToken = useSelector(state => state.userReducer.accessToken)
+  const userInfo = useSelector(state => state.userReducer.userInfo)
+  const { id: productId } = useParams()
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
   const [stock, setStock] = useState('')
@@ -35,7 +38,7 @@ const CreateEditProduct = () => {
     dispatch({
       type: 'SET_PAGE_TITLE',
       payload: {
-        pageTitle: 'Manage Product - Create'
+        pageTitle: 'Manage Product - Edit'
       }
     })
     dispatch({
@@ -51,12 +54,34 @@ const CreateEditProduct = () => {
             path: '/admin/product-manage'
           },
           {
-            text: `Create Product`,
-            path: `/admin/product-manage/create-product`
+            text: ``,
+            path: `/admin/product-manage/`
           }
         ]
       }
     })
+  }
+  const getProduct = async () => {
+    try {
+      const config = {
+        url: `http://localhost:3000/products/${productId}`,
+        method: 'GET',
+        headers: {
+          access_token: accessToken
+        }
+      }
+      const { data } = await axios(config)
+      setName(data.data.name)
+      setDescription(data.data.description)
+      setStock(data.data.stock)
+      setPrice(data.data.price)
+      setCategoryId(data.data.categories[0].id)
+      setImages(data.data.productImages.map(item => {
+        return item.url
+      }))
+    } catch (error) {
+      console.log(error)
+    }
   }
   const getCategories = async () => {
     if (!accessToken) {
@@ -98,13 +123,14 @@ const CreateEditProduct = () => {
   const saveProductData = async () => {
     try {
       const config = {
-        url: `http://localhost:3000/products/create`,
-        method: 'POST',
+        url: `http://localhost:3000/products/update/${productId}`,
+        method: 'PUT',
         headers: {
           access_token: accessToken
         },
         data: {
           name,
+          userId: userInfo.id,
           description,
           stock,
           price,
@@ -113,7 +139,6 @@ const CreateEditProduct = () => {
         }
       }
       await axios(config)
-      emptyFields()
       Toast.fire({
         icon: "success",
         title: "Data saved successfully"
@@ -122,18 +147,10 @@ const CreateEditProduct = () => {
       console.log(error)
     }
   }
-  const emptyFields = () => {
-    setName('')
-    setStock('')
-    setDescription('')
-    setImages([])
-    setStock('')
-    setCategoryId('')
-    setPrice('')
-  }
 
   useEffect(() => {
     getCategories()
+    getProduct()
   }, [accessToken])
   useEffect(() => {
     setNavbarData()
@@ -181,4 +198,4 @@ const CreateEditProduct = () => {
   )
 }
  
-export default CreateEditProduct
+export default EditProduct
