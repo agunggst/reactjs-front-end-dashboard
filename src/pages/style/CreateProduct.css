@@ -1,0 +1,53 @@
+.create-edit-product{
+  padding: 16px;
+  background-color: var(--base-grey);
+  box-shadow: 14px 17px 40px 4px rgba(112, 144, 176, 0.08);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: row;
+}
+.create-edit-product .field{
+  display: flex;
+  flex-direction: column;
+}
+.create-edit-product .edit-input{
+  margin-bottom: 32px !important;
+}
+.create-edit-product .button-container{
+  display: flex;
+  justify-content: flex-end;
+}
+.create-edit-product .left{
+  width: 800px;
+  border-right: 1px solid rgba(224, 224, 224, 1);
+}
+.create-edit-product .right{
+  padding-left: 32px;
+  width: 100%;
+}
+.create-edit-product .user-id-info .content{
+  font-weight: 500;
+  color: var(--text-grey);
+}
+.create-edit-product .product-images{
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 16px;
+  padding-right: 32px;
+}
+.create-edit-product .product-image{
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+.create-edit-product .add-product-image{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #999999;
+  border-radius: 12px;
+  cursor: pointer;
+  height: 100px;
+}

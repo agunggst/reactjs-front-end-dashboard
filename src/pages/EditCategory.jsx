@@ -41,7 +41,7 @@ const EditCategory = () => {
     dispatch({
       type: 'SET_PAGE_TITLE',
       payload: {
-        pageTitle: 'Category Management'
+        pageTitle: 'Manage Category'
       }
     })
     dispatch({
@@ -53,7 +53,7 @@ const EditCategory = () => {
             path: false
           },
           {
-            text: 'Category Management',
+            text: 'Manage Category',
             path: '/admin/category-manage'
           },
           {

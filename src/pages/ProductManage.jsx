@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import "./style/ProductManage.css"
-import { Button, TextField } from "@mui/material"
+import { Button, Pagination, TextField } from "@mui/material"
 import { Link } from "react-router-dom"
 import useDebounce from "../hooks/useDebounce"
 import axios from "axios"
@@ -16,12 +16,14 @@ const ProductManage = () => {
   const [products, setProducts] = useState([])
   const [inputSearch, setInputSearch] = useState('')
   const search = useDebounce(inputSearch)
+  const [page, setPage] = useState(1)
+  const perPage = 10
 
   const setNavbarData = () => {
     dispatch({
       type: 'SET_PAGE_TITLE',
       payload: {
-        pageTitle: 'Product Management'
+        pageTitle: 'Manage Product'
       }
     })
     dispatch({
@@ -33,7 +35,7 @@ const ProductManage = () => {
             path: false
           },
           {
-            text: 'Product Management',
+            text: 'Manage Product',
             path: '/admin/product-manage'
           }
         ]
@@ -64,6 +66,7 @@ const ProductManage = () => {
         }
       })
       setProducts(products)
+      setPage(1)
     } catch (error) {
       console.log(error);
     }
@@ -88,7 +91,10 @@ const ProductManage = () => {
         </Link>
       </div>
       <div className="table">
-        <CustomTable data={products} heads={tableHeads} onClickRowPath="/admin/product-manage"/>
+        <CustomTable data={products.slice(0 + perPage * (page - 1), perPage + perPage * (page - 1))} heads={tableHeads} onClickRowPath="/admin/product-manage"/>
+        <div className="pagination">
+          <Pagination count={Math.ceil(products.length/perPage)} onChange={((e, value) => setPage(value))} page={page} variant="outlined" color="primary" />
+        </div>
       </div>
     </div>
   )

@@ -78,7 +78,7 @@ const CreateUser = () => {
     dispatch({
       type: 'SET_PAGE_TITLE',
       payload: {
-        pageTitle: 'User Management - Create User'
+        pageTitle: 'Manage User - Create'
       }
     })
     dispatch({
@@ -90,7 +90,7 @@ const CreateUser = () => {
             path: false
           },
           {
-            text: 'User Management',
+            text: 'Manage User',
             path: '/admin/user-manage'
           },
           {

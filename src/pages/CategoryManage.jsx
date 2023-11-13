@@ -17,7 +17,7 @@ const CategoryManage = () => {
     dispatch({
       type: 'SET_PAGE_TITLE',
       payload: {
-        pageTitle: 'Category Management'
+        pageTitle: 'Manage Category'
       }
     })
     dispatch({
@@ -29,7 +29,7 @@ const CategoryManage = () => {
             path: false
           },
           {
-            text: 'Category Management',
+            text: 'Manage Category',
             path: '/admin/category-manage'
           }
         ]

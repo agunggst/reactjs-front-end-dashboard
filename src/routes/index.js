@@ -8,6 +8,7 @@ import CategoryManage from "../pages/CategoryManage";
 import InvoiceManage from "../pages/InvoiceManage";
 import EditCategory from "../pages/EditCategory";
 import CreateCategory from "../pages/CreateCategory";
+import CreateProduct from "../pages/CreateProduct";
 
 export const adminRoutes = [
   {
@@ -34,6 +35,18 @@ export const adminRoutes = [
     isGuarded: true,
     component: <ProductManage />
   },
+  {
+    path: 'product-manage/create-product',
+    name: 'Product Manage - Create',
+    isGuarded: true,
+    component: <CreateProduct />
+  },
+  // {
+  //   path: 'product-manage/:id',
+  //   name: 'Product Manage - Edit Product',
+  //   isGuarded: true,
+  //   component: <EditProduct />
+  // },
   {
     path: 'category-manage',
     name: 'Category Manage',

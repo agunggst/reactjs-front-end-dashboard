@@ -18,7 +18,7 @@ const InvoiceManage = () => {
     dispatch({
       type: 'SET_PAGE_TITLE',
       payload: {
-        pageTitle: 'Invoice Management'
+        pageTitle: 'Manage Invoice'
       }
     })
     dispatch({
@@ -30,7 +30,7 @@ const InvoiceManage = () => {
             path: false
           },
           {
-            text: 'Invoice Management',
+            text: 'Manage Invoice',
             path: '/admin/invoice-manage'
           }
         ]

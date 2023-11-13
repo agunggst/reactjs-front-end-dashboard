@@ -110,7 +110,7 @@ const EditUser = () => {
     dispatch({
       type: 'SET_PAGE_TITLE',
       payload: {
-        pageTitle: 'User Management'
+        pageTitle: 'Manage User'
       }
     })
     dispatch({
@@ -122,7 +122,7 @@ const EditUser = () => {
             path: false
           },
           {
-            text: 'User Management',
+            text: 'Manage User',
             path: '/admin/user-manage'
           },
           {

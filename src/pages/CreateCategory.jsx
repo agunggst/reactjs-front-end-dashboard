@@ -18,7 +18,7 @@ const CreateCategory = () => {
     dispatch({
       type: 'SET_PAGE_TITLE',
       payload: {
-        pageTitle: 'Category Management - Create Category'
+        pageTitle: 'Manage Category - Create'
       }
     })
     dispatch({
@@ -30,7 +30,7 @@ const CreateCategory = () => {
             path: false
           },
           {
-            text: 'Category Management',
+            text: 'Manage Category',
             path: '/admin/category-manage'
           },
           {
