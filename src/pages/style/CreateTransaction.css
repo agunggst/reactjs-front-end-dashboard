@@ -1,0 +1,14 @@
+.create-transaction{
+  padding: 16px;
+  background-color: var(--base-grey);
+  box-shadow: 14px 17px 40px 4px rgba(112, 144, 176, 0.08);
+  border-radius: 20px;
+  max-width: 800px;
+}
+.create-transaction .edit-input{
+  margin-bottom: 32px;
+}
+.create-transaction .button-container{
+  display: flex;
+  justify-content: flex-end;
+}

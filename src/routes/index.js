@@ -10,6 +10,8 @@ import EditCategory from "../pages/EditCategory";
 import CreateCategory from "../pages/CreateCategory";
 import CreateProduct from "../pages/CreateProduct";
 import EditProduct from "../pages/EditProduct";
+import TransactionManage from "../pages/TransactionManage";
+import CreateTransaction from "../pages/CreateTransaction";
 
 export const adminRoutes = [
   {
@@ -65,6 +67,18 @@ export const adminRoutes = [
     name: 'Category Manage - Edit Category',
     isGuarded: true,
     component: <EditCategory />
+  },
+  {
+    path: 'transaction-manage',
+    name: 'Transaction Manage',
+    isGuarded: true,
+    component: <TransactionManage />
+  },
+  {
+    path: 'transaction-manage/create-transaction',
+    name: 'Transaction Manage - Create Transaction',
+    isGuarded: true,
+    component: <CreateTransaction />
   },
   {
     path: 'invoice-manage',
