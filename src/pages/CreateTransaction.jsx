@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./style/CreateTransaction.css";
-import { Button, TextField, FormControl, InputLabel, Select, MenuItem } from "@mui/material";
+import { Button, TextField, FormControl, MenuItem } from "@mui/material";
 import Swal from "sweetalert2";
 import Toast from "../helpers/toast";
 
