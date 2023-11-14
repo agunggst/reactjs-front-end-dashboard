@@ -8,7 +8,7 @@ import useDebounce from "../hooks/useDebounce"
 import { Link } from "react-router-dom"
 import Toast from "../helpers/toast"
 import Swal from "sweetalert2"
-import DeleteIcon from '@mui/icons-material/Delete';
+import DeleteIcon from '@mui/icons-material/Delete'
 
 const UserManage = () => {
   const dispatch = useDispatch()
@@ -98,7 +98,7 @@ const UserManage = () => {
       await axios(config)
       Toast.fire({
         icon: "success",
-        title: "User data saved successfully"
+        title: "User deleted successfully"
       })
       getAllUsers()
     } catch (error) {

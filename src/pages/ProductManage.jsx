@@ -8,11 +8,14 @@ import axios from "axios"
 import CustomTable from "../components/CustomTable"
 import moment from "moment/moment"
 import rupiahFormatter from "../helpers/rupiahFormater"
+import DeleteIcon from '@mui/icons-material/Delete'
+import Swal from "sweetalert2"
+import Toast from "../helpers/toast"
 
 const ProductManage = () => {
   const dispatch = useDispatch()
   const accessToken = useSelector(state => state.userReducer.accessToken)
-  const tableHeads = ['Product Id', 'Name', 'Stock', 'Price', 'Category(s)', 'Created Date']
+  const tableHeads = ['Product Id', 'Name', 'Stock', 'Price', 'Category(s)', 'Created Date', 'Delete']
   const [products, setProducts] = useState([])
   const [inputSearch, setInputSearch] = useState('')
   const search = useDebounce(inputSearch)
@@ -62,11 +65,44 @@ const ProductManage = () => {
           stock: item.stock,
           price: rupiahFormatter(item.price),
           categories: item.categories.map(category => category.name).join(','),
-          createdDate: moment(item.createdAt).format('MMMM Do YYYY, h:mm:ss a')
+          createdDate: moment(item.createdAt).format('MMMM Do YYYY, h:mm:ss a'),
+          _delete: <DeleteIcon onClick={() => confirmDeleteProduct(item.id)} sx={{ color: 'red' }} />
         }
       })
       setProducts(products)
       setPage(1)
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  const confirmDeleteProduct = (id) => {
+    Swal.fire({
+      title: "Do you want to delete this product?",
+      showDenyButton: true,
+      confirmButtonText: "Yes",
+      denyButtonText: `Cancel`
+    })
+    .then((result) => {
+      if (result.isConfirmed) {
+        deleteProduct(id)
+      }
+    })
+  }
+  const deleteProduct = async (id) => {
+    try {
+      const config = {
+        url: `http://localhost:3000/products/delete/${id}`,
+        method: 'DELETE',
+        headers: {
+          access_token: accessToken
+        }
+      }
+      await axios(config)
+      Toast.fire({
+        icon: "success",
+        title: "Product deleted successfully"
+      })
+      getAllProducts()
     } catch (error) {
       console.log(error);
     }
