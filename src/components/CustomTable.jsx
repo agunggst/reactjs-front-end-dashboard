@@ -20,7 +20,7 @@ const CustomTable = ({ data, heads, onClickRowPath }) => {
             <TableRow>
               {heads.map((head, i) => {
                 return (
-                  <TableCell align={`${head.toLowerCase().includes('id') ? 'center' : 'left'}`} key={i}>{head}</TableCell>
+                  <TableCell align={`${head.toLowerCase().includes('id') || head.toLowerCase().includes('delete') ? 'center' : 'left'}`} key={i}>{head}</TableCell>
                 )
               })}
             </TableRow>
@@ -28,10 +28,10 @@ const CustomTable = ({ data, heads, onClickRowPath }) => {
           <TableBody>
             {data.map((item, index) => {
               return (
-                <TableRow key={index} onClick={() => navigate(`${onClickRowPath}/${item.id}`)} sx={{ '&:last-child td, &:last-child th': { border: 0 }, cursor: 'pointer' }}>
+                <TableRow key={index} sx={{ '&:last-child td, &:last-child th': { border: 0 }, cursor: 'pointer' }}>
                   {Object.entries(item).map(([key, value]) => {
                     return (
-                      <TableCell key={`${index} ${key}`} align={`${key === 'id' ? 'center' : 'left'}`}>{value}</TableCell>
+                      <TableCell onClick={() => key !== '_delete' && navigate(`${onClickRowPath}/${item.id}`)} key={`${index} ${key}`} align={`${key === 'id' || key.includes('_') ? 'center' : 'left'}`}>{value}</TableCell>
                     )
                   })}
                 </TableRow>

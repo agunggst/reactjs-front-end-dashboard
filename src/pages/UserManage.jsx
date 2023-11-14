@@ -6,12 +6,15 @@ import { useEffect, useState } from "react"
 import axios from "axios"
 import useDebounce from "../hooks/useDebounce"
 import { Link } from "react-router-dom"
+import Toast from "../helpers/toast"
+import Swal from "sweetalert2"
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const UserManage = () => {
   const dispatch = useDispatch()
   const [page, setPage] = useState(1)
   const accessToken = useSelector(state => state.userReducer.accessToken)
-  const tableHeads = ['User Id', 'Username', 'Full Name', 'Avatar', 'Email', 'Address']
+  const tableHeads = ['User Id', 'Username', 'Full Name', 'Avatar', 'Email', 'Address', 'Delete']
   const [users, setUsers] = useState([])
   const [inputSearch, setInputSearch] = useState('')
   const search = useDebounce(inputSearch)
@@ -60,11 +63,44 @@ const UserManage = () => {
           fullname: user.fullname,
           avatar: <Avatar src={user.avatar}/>,
           email: user.email,
-          address: user.address
+          address: user.address,
+          _delete: <DeleteIcon onClick={() => confirmDeleteUser(user.id)} sx={{ color: 'red' }} />
         }
       })
       setUsers(users)
       setPage(1)
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  const confirmDeleteUser = (id) => {
+    Swal.fire({
+      title: "Do you want to delete this user?",
+      showDenyButton: true,
+      confirmButtonText: "Yes",
+      denyButtonText: `Cancel`
+    })
+    .then((result) => {
+      if (result.isConfirmed) {
+        deleteUser(id)
+      }
+    })
+  }
+  const deleteUser = async (id) => {
+    try {
+      const config = {
+        url: `http://localhost:3000/users/delete/${id}`,
+        method: 'DELETE',
+        headers: {
+          access_token: accessToken
+        }
+      }
+      await axios(config)
+      Toast.fire({
+        icon: "success",
+        title: "User data saved successfully"
+      })
+      getAllUsers()
     } catch (error) {
       console.log(error);
     }
