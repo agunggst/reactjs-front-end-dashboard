@@ -9,11 +9,8 @@ import InvoiceManage from "../pages/InvoiceManage";
 import EditCategory from "../pages/EditCategory";
 import CreateCategory from "../pages/CreateCategory";
 import CreateProduct from "../pages/CreateProduct";
-<<<<<<< HEAD
 import EditProduct from "../pages/EditProduct";
-=======
 import EditTransaction from "../pages/EditTransaction";
->>>>>>> 967c010 (edit trnsaction)
 import TransactionManage from "../pages/TransactionManage";
 import CreateTransaction from "../pages/CreateTransaction";
 
