@@ -1,0 +1,16 @@
+.edit-transaction{
+  padding: 16px;
+  background-color: var(--base-grey);
+  box-shadow: 14px 17px 40px 4px rgba(112, 144, 176, 0.08);
+  border-radius: 20px;
+  max-width: 800px;
+}
+.edit-transaction .edit-input{
+  width: 350px;
+  margin-bottom: 32px;
+}
+
+.edit-transaction .button-container{
+  display: flex;
+  justify-content: flex-end;
+}
