@@ -31,7 +31,7 @@ const CustomTable = ({ data, heads, onClickRowPath }) => {
                 <TableRow key={index} sx={{ '&:last-child td, &:last-child th': { border: 0 }, cursor: 'pointer' }}>
                   {Object.entries(item).map(([key, value]) => {
                     return (
-                      <TableCell onClick={() => key !== '_delete' && navigate(`${onClickRowPath}/${item.id}`)} key={`${index} ${key}`} align={`${key === 'id' || key.includes('_') ? 'center' : 'left'}`}>{value}</TableCell>
+                      <TableCell onClick={() => key !== '_delete' && onClickRowPath && navigate(`${onClickRowPath}/${item.id}`)} key={`${index} ${key}`} align={`${key === 'id' || key.includes('_') ? 'center' : 'left'}`}>{value}</TableCell>
                     )
                   })}
                 </TableRow>

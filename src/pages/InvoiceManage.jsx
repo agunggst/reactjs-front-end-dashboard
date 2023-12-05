@@ -90,7 +90,7 @@ const InvoiceManage = () => {
         />
       </div>
       <div className="table">
-        <CustomTable data={invoices.slice(0 + perPage * (page - 1), perPage + perPage * (page - 1))} heads={tableHeads} onClickRowPath="/admin/invoice-manage" />
+        <CustomTable data={invoices.slice(0 + perPage * (page - 1), perPage + perPage * (page - 1))} heads={tableHeads} onClickRowPath={false} />
         <div className="pagination">
           <Pagination count={Math.ceil(invoices.length/perPage)} onChange={((e, value) => setPage(value))} page={page} variant="outlined" color="primary" />
         </div>

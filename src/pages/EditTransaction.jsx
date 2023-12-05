@@ -13,6 +13,10 @@ const EditTransaction = () => {
   const { id: transactionId } = useParams();
   const [status, setStatus] = useState([
     {
+      value: 'On Process',
+      label: 'On Process',
+    },
+    {
       value: "On Delivery",
       label: "On Delivery",
     },
@@ -21,12 +25,12 @@ const EditTransaction = () => {
       label: "Arrived at Destination",
     },
     {
-      value: "Cancel",
-      label: "Cancel",
-    },
-    {
       value: "Done",
       label: "Done",
+    },
+    {
+      value: "Cancel",
+      label: "Cancel",
     },
   ]);
   const [selectedStatus, setSelectedStatus] = useState("");
